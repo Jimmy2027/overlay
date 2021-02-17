@@ -13,7 +13,7 @@ HOMEPAGE="https://https://github.com/Jimmy2027/PPB"
 EGIT_REPO_URI="https://github.com/Jimmy2027/PPB.git"
 KEYWORDS="~amd64 ~x86"
 LICENSE="GNU General Public License v2.0"
-LOT="0"
+SLOT="0"
 DEPEND="
     dev-python/flask[${PYTHON_USEDEP}]
     dev-python/pandas[${PYTHON_USEDEP}]
