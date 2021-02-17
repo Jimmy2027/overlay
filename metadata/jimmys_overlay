@@ -1,0 +1,6 @@
+[jimmys_overlay]
+masters = gentoo
+location = /var/db/repos/jimmys_overlay
+sync-type = git
+sync-uri = https://github.com/Jimmy2027/overlay
+priority=8889
