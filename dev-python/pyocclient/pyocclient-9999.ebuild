@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 LICENSE="MIT License"
 SLOT="0"
 DEPEND="
-    dev-python/pyocclient[${PYTHON_USEDEP}]
+    dev-python/six[${PYTHON_USEDEP}]
     dev-python/requests[${PYTHON_USEDEP}]
     "
 
