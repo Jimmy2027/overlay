@@ -13,6 +13,4 @@ KEYWORDS="amd64"
 
 src_install() {
 	emake DESTDIR="${D}" install
-
-	dodoc FAQ NEWS README
 }
