@@ -10,6 +10,8 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64"
 
+RDEPEND="app-misc/jq"
+DEPEND="${RDEPEND}"
 
 src_install() {
 	emake DESTDIR="${D}" install
