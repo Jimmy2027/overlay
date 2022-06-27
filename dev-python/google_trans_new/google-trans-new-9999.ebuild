@@ -7,7 +7,6 @@ inherit distutils-r1
 inherit git-r3
 
 
-MY_PV=${PV/_/}
 DESCRIPTION="Free Google Translate API for Python. Translates totally free of charge."
 HOMEPAGE="https://pypi.org/project/google-trans-new/ https://github.com/lushan88a/google_trans_new"
 EGIT_REPO_URI="https://github.com/lushan88a/google_trans_new.git"
