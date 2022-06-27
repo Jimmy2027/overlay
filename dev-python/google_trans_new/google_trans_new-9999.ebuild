@@ -8,8 +8,8 @@ inherit git-r3
 
 
 DESCRIPTION="Free Google Translate API for Python. Translates totally free of charge."
-HOMEPAGE="https://pypi.org/project/google-trans-new/ https://github.com/lushan88a/google_trans_new"
-EGIT_REPO_URI="https://github.com/lushan88a/google_trans_new.git"
+HOMEPAGE="https://pypi.org/project/google-trans-new/ https://github.com/Jimmy2027/google_trans_new"
+EGIT_REPO_URI="https://github.com/Jimmy2027/google_trans_new.git"
 
 
 LICENSE="MIT"
