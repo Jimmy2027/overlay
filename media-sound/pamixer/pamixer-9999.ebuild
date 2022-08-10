@@ -21,7 +21,7 @@ IUSE=""
 
 RDEPEND="
 	dev-libs/boost
-	media-sound/pulseaudio1"
+	media-sound/pulseaudio"
 
 DEPEND="${RDEPEND}"
 
