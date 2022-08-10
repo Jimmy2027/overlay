@@ -26,6 +26,6 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_install() {
-	dobin ${PN}
+	dobin ${PN}.1
 	dodoc README.rst
 }
