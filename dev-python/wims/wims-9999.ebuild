@@ -17,6 +17,7 @@ SLOT="0"
 DEPEND="
     dev-python/pymongo[${PYTHON_USEDEP}]
     dev-python/modun[${PYTHON_USEDEP}]
+    dev-python/fuzzywuzzy[${PYTHON_USEDEP}]
     "
 
 RDEPEND="${DEPEND}"
