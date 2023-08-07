@@ -1,38 +1,33 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7,...,11} )
-DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-inherit distutils-r1
+PYTHON_COMPAT=( python3_{10..12} )
+DISTUTILS_USE_PEP517=flit
+inherit distutils-r1 pypi
 
 DESCRIPTION="Typer, build great CLIs. Easy to code. Based on Python type hints."
-HOMEPAGE="https://typer.tiangolo.com/"
+HOMEPAGE="https://github.com/tiangolo/typer https://pypi.org/project/typer/"
 EGIT_REPO_URI="https://github.com/tiangolo/typer.git"
+
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE=""
+KEYWORDS="amd64 arm arm64 x86"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
-DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-"
-RDEPEND="
-	<dev-python/click-9.0.0[${PYTHON_USEDEP}]
-"
+DOCS="README.md"
+
+RDEPEND=">=dev-python/click-7.1.1[${PYTHON_USEDEP}]"
 BDEPEND="
-	dev-python/pyproject2setuppy[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/shellingham[${PYTHON_USEDEP}]
-		dev-python/coverage[${PYTHON_USEDEP}]
-	)
-"
+	)"
+
+python_test() {
+	py.test -v -v || die
+}
 
 distutils_enable_tests pytest
-
-python_install_all() {
-    distutils-r1_python_install_all
-}
