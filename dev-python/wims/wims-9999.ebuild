@@ -18,6 +18,8 @@ DEPEND="
     dev-python/pymongo[${PYTHON_USEDEP}]
     dev-python/modun[${PYTHON_USEDEP}]
     dev-python/fuzzywuzzy[${PYTHON_USEDEP}]
+    dev-python/pandas[${PYTHON_USEDEP}]
+    dev-python/tabulate[${PYTHON_USEDEP}]
     "
 
 RDEPEND="${DEPEND}"
