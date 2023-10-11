@@ -1,0 +1,12 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer>
+        <email>hendrik.klug@gmail.com</email>
+        <name>Hendrik Klug</name>
+    </maintainer>
+    <longdescription lang="en">
+        Vimwiki is a personal wiki for Vim.
+    </longdescription>
+</pkgmetadata>
