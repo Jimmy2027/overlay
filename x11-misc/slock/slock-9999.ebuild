@@ -19,6 +19,7 @@ RDEPEND="
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXrandr
+	media-libs/imlib2
 "
 DEPEND="
 	${RDEPEND}
