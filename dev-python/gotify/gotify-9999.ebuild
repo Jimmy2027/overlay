@@ -5,6 +5,9 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{7..12} )
 
+# see https://blogs.gentoo.org/mgorny/2019/12/24/handling-pep-517-pyproject-toml-packages-in-gentoo/
+DISTUTILS_USE_SETUPTOOLS=pyproject.toml
+
 inherit distutils-r1
 inherit git-r3
 
