@@ -15,10 +15,13 @@ KEYWORDS="~amd64 ~x86"
 LICENSE="MIT License"
 SLOT="0"
 
-IUSE="tasknote"
+IUSE="tasknote, gotify"
 
 DEPEND="tasknote? (
     app-misc/tasknote[${PYTHON_USEDEP}]
+)
+gotify? (
+    dev-python/gotify[${PYTHON_USEDEP}]
 )
 "
 
