@@ -17,7 +17,9 @@ SLOT="0"
 
 IUSE="tasknote gotify"
 
-DEPEND="tasknote? (
+DEPEND="
+dev-python/tasklib[${PYTHON_USEDEP}]
+tasknote? (
     app-misc/tasknote[${PYTHON_USEDEP}]
 )
 gotify? (
