@@ -1,0 +1,24 @@
+# Copyright 1999-2024 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v3
+
+EAPI=8
+
+PYTHON_COMPAT=( python3_{7..12} )
+
+
+inherit distutils-r1
+inherit git-r3
+
+DESCRIPTION="Chain pull requests from your devbranch's commits."
+HOMEPAGE="https://github.com/Jimmy2027/ghchain"
+EGIT_REPO_URI="https://github.com/Jimmy2027/ghchain.git"
+KEYWORDS="~amd64 ~x86"
+LICENSE="MIT License"
+SLOT="0"
+
+
+DEPEND="
+dev-python/click[${PYTHON_USEDEP}]
+"
+
+RDEPEND="${DEPEND}"
