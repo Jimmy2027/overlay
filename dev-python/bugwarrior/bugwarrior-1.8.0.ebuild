@@ -25,7 +25,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="activecollab bts bugzilla gmail jira keyring megaplan phabricator trac"
 DEPENDENCIES="dev-python/click[${PYTHON_USEDEP}]
 >=dev-python/dogpile-cache-0.5.3[${PYTHON_USEDEP}]
-dev-python/future[${PYTHON_USEDEP}]
 dev-python/jinja[${PYTHON_USEDEP}]
 >=dev-python/lockfile-0.9.1[${PYTHON_USEDEP}]
 dev-python/python-dateutil[${PYTHON_USEDEP}]
