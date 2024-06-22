@@ -7,9 +7,8 @@ LITERALNAME="${PN}"
 REALVERSION="${PV}"
 DIGEST_SOURCES="yes"
 PYTHON_COMPAT=( python{3_10,3_11,3_12} )
-DISTUTILS_USE_PEP517=standalone
+DISTUTILS_USE_PEP517=setuptools
 
-inherit python-r1 gs-pypi
 inherit distutils-r1
 inherit git-r3
 
@@ -45,11 +44,3 @@ phabricator? ( dev-python/phabricator[${PYTHON_USEDEP}] )
 trac? ( dev-python/offtrac[${PYTHON_USEDEP}] )"
 BDEPEND="${DEPENDENCIES}"
 RDEPEND="${DEPENDENCIES}"
-
-src_unpack() {
-    git-r3_src_unpack
-}
-
-python_install_all() {
-    distutils-r1_python_install_all
-}
