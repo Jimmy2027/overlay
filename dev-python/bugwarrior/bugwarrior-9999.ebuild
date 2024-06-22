@@ -21,6 +21,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 IUSE="activecollab bts bugzilla gmail jira keyring megaplan phabricator trac"
+
+# dev-python/pydantic[email]<2[${PYTHON_USEDEP}]
 DEPENDENCIES="dev-python/click[${PYTHON_USEDEP}]
 >=dev-python/dogpile-cache-0.5.3[${PYTHON_USEDEP}]
 dev-python/jinja[${PYTHON_USEDEP}]
@@ -30,7 +32,6 @@ dev-python/pytz[${PYTHON_USEDEP}]
 dev-python/requests[${PYTHON_USEDEP}]
 >=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 dev-python/taskw[${PYTHON_USEDEP}]
-dev-python/pydantic[email]<2[${PYTHON_USEDEP}]
 activecollab? ( dev-python/pyac[${PYTHON_USEDEP}] )
 activecollab? ( dev-python/pypandoc[${PYTHON_USEDEP}] )
 bts? ( dev-python/PySimpleSOAP[${PYTHON_USEDEP}] )
