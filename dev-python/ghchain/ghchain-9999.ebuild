@@ -12,13 +12,14 @@ inherit git-r3
 DESCRIPTION="Chain pull requests from your devbranch's commits."
 HOMEPAGE="https://github.com/Jimmy2027/ghchain"
 EGIT_REPO_URI="https://github.com/Jimmy2027/ghchain.git"
-KEYWORDS="~amd64 ~x86"
 LICENSE="MIT License"
+KEYWORDS=""
 SLOT="0"
 
 
 DEPEND="
 dev-python/click[${PYTHON_USEDEP}]
+>=dev-python/pydantic-2[${PYTHON_USEDEP}]
 "
 
 RDEPEND="${DEPEND}"
