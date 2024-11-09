@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{7..12} )
+PYTHON_COMPAT=( python3_{7..13} )
 
 
 inherit distutils-r1
@@ -19,6 +19,7 @@ SLOT="0"
 
 DEPEND="
 dev-python/click[${PYTHON_USEDEP}]
+sys-apps/edid-decode
 "
 
 RDEPEND="${DEPEND}"
