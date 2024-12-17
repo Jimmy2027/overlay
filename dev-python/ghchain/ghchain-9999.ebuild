@@ -21,7 +21,7 @@ SLOT="0"
 DEPEND="
 dev-python/click[${PYTHON_USEDEP}]
 >=dev-python/pydantic-2[${PYTHON_USEDEP}]
-dev-python/GitPython[${PYTHON_USEDEP}]
+dev-python/gitpython[${PYTHON_USEDEP}]
 "
 
 RDEPEND="${DEPEND}"
