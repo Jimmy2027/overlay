@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{7..12} )
+PYTHON_COMPAT=( python3_{7..13} )
 
 # see https://blogs.gentoo.org/mgorny/2019/12/24/handling-pep-517-pyproject-toml-packages-in-gentoo/
 DISTUTILS_USE_PEP517=flit
