@@ -23,6 +23,7 @@ dev-python/click[${PYTHON_USEDEP}]
 >=dev-python/pydantic-2[${PYTHON_USEDEP}]
 dev-python/gitpython[${PYTHON_USEDEP}]
 dev-python/loguru[${PYTHON_USEDEP}]
+dev-python/pandas[${PYTHON_USEDEP}]
 "
 
 RDEPEND="${DEPEND}"
