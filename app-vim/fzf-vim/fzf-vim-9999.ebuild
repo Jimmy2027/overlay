@@ -17,14 +17,6 @@ RDEPEND="
 	app-shells/fzf
 "
 
-src_unpack() {
-    git-r3_src_unpack
-}
-
-
-    # vim-plugin_src_install
 src_install() {
-    # Move the plugin files to the desired location
-    insinto /usr/share/vim/vimfiles/pack/plugins/start/
-    doins -r "${S}/autoload" "${S}/doc" "${S}/plugin"
+    vim-plugin_src_install
 }
