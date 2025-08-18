@@ -16,19 +16,17 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-RESTRICT="mirror"
 LICENSE="GPL-3"
 SLOT="0"
-IUSE=""
+RESTRICT="mirror"
 
 RDEPEND="
 	dev-libs/boost
-	media-sound/pulseaudio
+	media-libs/libpulse
 	dev-libs/cxxopts"
 
 DEPEND="${RDEPEND}"
 
-
 src_configure() {
-        meson_src_configure
+	meson_src_configure
 }

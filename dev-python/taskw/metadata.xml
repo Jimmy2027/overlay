@@ -5,4 +5,7 @@
 		<email>gentoo@houseofsuns.org</email>
 		<name>Markus Walter</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="pypi">taskw</remote-id>
+	</upstream>
 </pkgmetadata>

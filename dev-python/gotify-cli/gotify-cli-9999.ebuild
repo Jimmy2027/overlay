@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{7..13} )
+PYTHON_COMPAT=( python3_{10..14} )
 
 inherit distutils-r1
 inherit git-r3
@@ -14,7 +14,7 @@ DESCRIPTION="A command line interface to send messages with gotify."
 HOMEPAGE="https://github.com/Jimmy2027/gotify_cli"
 EGIT_REPO_URI="https://github.com/Jimmy2027/gotify_cli.git"
 KEYWORDS="~amd64 ~x86"
-LICENSE="MIT License"
+LICENSE="MIT"
 SLOT="0"
 DEPEND="
     dev-python/gotify[${PYTHON_USEDEP}]

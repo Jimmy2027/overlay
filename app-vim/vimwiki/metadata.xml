@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
@@ -9,4 +8,7 @@
     <longdescription lang="en">
         Vimwiki is a personal wiki for Vim.
     </longdescription>
+    <upstream>
+        <remote-id type="github">vimwiki/vimwiki</remote-id>
+    </upstream>
 </pkgmetadata>

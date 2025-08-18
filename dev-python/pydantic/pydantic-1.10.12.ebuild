@@ -50,4 +50,3 @@ python_compile() {
 	fi
 	distutils-r1_python_compile
 }
-
