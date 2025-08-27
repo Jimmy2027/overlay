@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>hendrik@example.com</email>
+    <name>Hendrik</name>
+  </maintainer>
+  <longdescription>
+  OpenAI Codex CLI is an experimental command-line tool that brings the power of AI reasoning models directly to your terminal. It acts as a lightweight coding agent that can read, modify, and run code on your local machine to help you build features faster, squash bugs, and understand unfamiliar code.
+  </longdescription>
+  <upstream>
+    <doc>https://github.com/openai/codex</doc>
+    <remote-id type="github">openai/codex</remote-id>
+  </upstream>
+</pkgmetadata>
