@@ -18,7 +18,7 @@ KEYWORDS=""
 
 DEPEND="
 dev-python/click[${PYTHON_USEDEP}]
-sys-apps/edid-decode
+media-libs/libv4l
 "
 
 RDEPEND="${DEPEND}"
