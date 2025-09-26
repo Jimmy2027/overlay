@@ -37,6 +37,12 @@ src_install() {
 	doins -r ./*
 	fperms a+x opt/codex-cli/bin/codex.js
 
+	# Set execute permissions on vendor binaries
+	fperms a+x opt/codex-cli/vendor/x86_64-unknown-linux-musl/codex/codex
+	fperms a+x opt/codex-cli/vendor/aarch64-unknown-linux-musl/codex/codex
+	fperms a+x opt/codex-cli/vendor/x86_64-apple-darwin/codex/codex
+	fperms a+x opt/codex-cli/vendor/aarch64-apple-darwin/codex/codex
+
 	dodir /opt/bin
 	dosym -r /opt/${PN}/bin/codex.js /opt/bin/codex
 
