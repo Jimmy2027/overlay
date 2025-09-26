@@ -36,10 +36,6 @@ src_install() {
 	insinto /opt/${PN}
 	doins -r ./*
 	fperms a+x opt/codex-cli/bin/codex.js
-	fperms a+x opt/codex-cli/bin/codex-x86_64-unknown-linux-musl
-	fperms a+x opt/codex-cli/bin/codex-aarch64-unknown-linux-musl
-	fperms a+x opt/codex-cli/bin/codex-x86_64-apple-darwin
-	fperms a+x opt/codex-cli/bin/codex-aarch64-apple-darwin
 
 	dodir /opt/bin
 	dosym -r /opt/${PN}/bin/codex.js /opt/bin/codex
