@@ -40,8 +40,6 @@ pkg_pretend() {
 	    ! grep -q "CONFIG_PROTECT=\"/var/lib/${PN}\"" "${EROOT}/etc/env.d/90${PN}" 2>/dev/null; then
 		eerror "Bad CONFIG_PROTECT"
 		eerror "update ${EROOT}/etc/env.d/90${PN} to include CONFIG_PROTECT=\"/var/lib/${PN}\""
-		eerror ""
-		eerror ""
 		die "Bad CONFIG_PROTECT"
 	fi
 }
@@ -49,25 +47,39 @@ pkg_pretend() {
 src_prepare() {
 	nodejs-mod_src_prepare
 
+	export npm_config_cache="${T}/npm-cache"
+	export npm_config_fund=false
+	export npm_config_update_notifier=false
 	# Install node modules (include dev deps for tsc)
 	if [[ ! -d node_modules ]]; then
 		einfo "Installing node modules via npm"
-		# make sure devDependencies are included
-		export npm_config_production=false
+		export npm_config_legacy_peer_deps=true
+		mkdir -p "${npm_config_cache}" || die
 		# prefer ci if you have a lockfile in the tarball; fallback to install
 		if [[ -f package-lock.json ]]; then
 			npm ci --audit false --color false --progress false --verbose \
+				--include=dev \
 				|| die "npm ci failed"
 		else
 			npm install --audit false --color false --progress false --verbose \
+				--include=dev \
 				|| die "npm install failed"
 		fi
 	fi
+
+	Z2M_CONFIG="${T}/${PN}.configuration.yaml"
+	cp data/configuration.example.yaml "${Z2M_CONFIG}" || die
+	cat <<-EOF >> "${Z2M_CONFIG}" || die
+
+advanced:
+  network_key: GENERATE
+  pan_id: GENERATE
+  log_directory: /var/log/${PN}
+EOF
 }
 
 src_compile() {
 	# Build TypeScript → dist/
-	export npm_config_production=false
 	npm run build || die "npm run build failed"
 	# npm run build calls "node index.js writehash" which writes "unknown"
 	# because there's no git repo. Overwrite it with the correct hash.
@@ -75,14 +87,19 @@ src_compile() {
 
 	# Rebuild native addons for the current Node.js ABI
 	einfo "Rebuilding native addons"
+	local node_gyp="/usr/$(get_libdir)/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js"
+	local nodedir="${ESYSROOT:-${EPREFIX}}/usr"
 
-	# Force rebuild of @serialport/bindings-cpp using npx
-	cd node_modules/@serialport/bindings-cpp || die
-	npx --yes node-gyp rebuild || die "Failed to rebuild @serialport/bindings-cpp"
-	cd - >/dev/null || die
+	[[ -e ${node_gyp} ]] || die "Unable to locate node-gyp helper"
 
-	# Rebuild any other native modules
-	npm rebuild || die "npm rebuild failed"
+	if [[ -d node_modules ]]; then
+		while IFS= read -r dir; do
+			pushd "${dir}" >/dev/null || die
+			npm_config_nodedir="${nodedir}" node "${node_gyp}" rebuild \
+				|| die "node-gyp rebuild failed in ${dir}"
+			popd >/dev/null || die
+		done < <(find node_modules -name binding.gyp -exec dirname {} \;)
+	fi
 }
 
 src_test() {
@@ -92,26 +109,29 @@ src_test() {
 }
 
 src_install() {
-
-	echo -e "\nadvanced:" >>data/configuration.yaml
-	echo -e "  network_key: GENERATE" >>data/configuration.yaml
-	echo -e "  pan_id: GENERATE" >>data/configuration.yaml
-	echo -e "  log_directory: /var/log/${PN}" >>data/configuration.yaml
-
 	nodejs-mod_src_install
 
 	keepdir /var/log/${PN}
+	fowners zigbee2mqtt:zigbee2mqtt /var/log/${PN}
+	fperms 0750 /var/log/${PN}
 
 	insinto /var/lib/${PN}
-	doins data/configuration.yaml
+	newins "${Z2M_CONFIG}" configuration.yaml
+	fowners zigbee2mqtt:zigbee2mqtt /var/lib/${PN}
+	fowners zigbee2mqtt:zigbee2mqtt /var/lib/${PN}/configuration.yaml
+	fperms 0750 /var/lib/${PN}
+	fperms 0640 /var/lib/${PN}/configuration.yaml
+
+	dodoc data/configuration.example.yaml
 
 	dotmpfiles "${FILESDIR}"/zigbee2mqtt.conf
 
 	doinitd "${FILESDIR}"/${PN}
 	systemd_dounit "${FILESDIR}/${PN}.service"
 
-	dodir /etc/env.d
-	echo "CONFIG_PROTECT=\"/var/lib/${PN}"\" >>"${ED}"/etc/env.d/90${PN} || die
+	newenvd - 90${PN} <<-EOF || die
+	CONFIG_PROTECT="/var/lib/${PN}"
+	EOF
 }
 
 pkg_postinst() {
