@@ -76,9 +76,9 @@ src_compile() {
 	# Rebuild native addons for the current Node.js ABI
 	einfo "Rebuilding native addons"
 
-	# Force rebuild of @serialport/bindings-cpp
+	# Force rebuild of @serialport/bindings-cpp using npx
 	cd node_modules/@serialport/bindings-cpp || die
-	node-gyp rebuild || die "Failed to rebuild @serialport/bindings-cpp"
+	npx --yes node-gyp rebuild || die "Failed to rebuild @serialport/bindings-cpp"
 	cd - >/dev/null || die
 
 	# Rebuild any other native modules
