@@ -68,12 +68,24 @@ src_prepare() {
 	fi
 
 	Z2M_CONFIG="${T}/${PN}.configuration.yaml"
-	cp data/configuration.example.yaml "${Z2M_CONFIG}" || die
-	cat <<-EOF >> "${Z2M_CONFIG}" || die
+	cat <<-EOF > "${Z2M_CONFIG}" || die
+# Gentoo default Zigbee2MQTT configuration.
+# See /usr/share/doc/${PF}/configuration.example.yaml for the full reference.
+
+homeassistant:
+  enabled: false
+
+frontend:
+  enabled: true
+
+mqtt:
+  base_topic: zigbee2mqtt
+  server: mqtt://localhost
 
 advanced:
   network_key: GENERATE
   pan_id: GENERATE
+  ext_pan_id: GENERATE
   log_directory: /var/log/${PN}
 EOF
 }
@@ -109,12 +121,23 @@ src_test() {
 }
 
 src_install() {
+	local moddir
+	pushd "${S}" >/dev/null || die
+	moddir="$(nodejs_modules)" || die
+	popd >/dev/null || die
+
 	nodejs-mod_src_install
+
+	if [[ ! -d "${ED}/${moddir}/dist" ]]; then
+		insinto "${moddir}"
+		doins -r dist || die "failed to install dist assets"
+	fi
 
 	keepdir /var/log/${PN}
 	fowners zigbee2mqtt:zigbee2mqtt /var/log/${PN}
 	fperms 0750 /var/log/${PN}
 
+	keepdir /var/lib/${PN}
 	insinto /var/lib/${PN}
 	newins "${Z2M_CONFIG}" configuration.yaml
 	fowners zigbee2mqtt:zigbee2mqtt /var/lib/${PN}
