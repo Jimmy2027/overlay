@@ -24,6 +24,9 @@ RESTRICT="network-sandbox"
 
 BDEPEND="
 	net-libs/nodejs
+	sys-devel/gcc
+	virtual/pkgconfig
+	dev-lang/python:*
 "
 
 RDEPEND="
@@ -69,6 +72,10 @@ src_compile() {
 	# npm run build calls "node index.js writehash" which writes "unknown"
 	# because there's no git repo. Overwrite it with the correct hash.
 	echo "${COMMIT}" > dist/.hash || die
+
+	# Rebuild native addons for the current Node.js ABI
+	einfo "Rebuilding native addons"
+	npm rebuild || die "npm rebuild failed"
 }
 
 src_test() {
