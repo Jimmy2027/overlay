@@ -22,6 +22,10 @@ SLOT="0"
 KEYWORDS="~amd64"
 RESTRICT="network-sandbox"
 
+BDEPEND="
+	net-libs/nodejs
+"
+
 RDEPEND="
 	acct-group/zigbee2mqtt
 	acct-user/zigbee2mqtt
@@ -42,15 +46,29 @@ pkg_pretend() {
 src_prepare() {
 	nodejs-mod_src_prepare
 
-	# Install node modules if not present
+	# Install node modules (include dev deps for tsc)
 	if [[ ! -d node_modules ]]; then
 		einfo "Installing node modules via npm"
-		npm install --audit false --color false --progress false --verbose || die "npm install failed"
+		# make sure devDependencies are included
+		export npm_config_production=false
+		# prefer ci if you have a lockfile in the tarball; fallback to install
+		if [[ -f package-lock.json ]]; then
+			npm ci --audit false --color false --progress false --verbose \
+				|| die "npm ci failed"
+		else
+			npm install --audit false --color false --progress false --verbose \
+				|| die "npm install failed"
+		fi
 	fi
+}
 
-	# Create hash file for version info
-	mkdir -p dist
-	echo "${COMMIT}" > dist/.hash
+src_compile() {
+	# Build TypeScript → dist/
+	export npm_config_production=false
+	npm run build || die "npm run build failed"
+	# npm run build calls "node index.js writehash" which writes "unknown"
+	# because there's no git repo. Overwrite it with the correct hash.
+	echo "${COMMIT}" > dist/.hash || die
 }
 
 src_test() {
