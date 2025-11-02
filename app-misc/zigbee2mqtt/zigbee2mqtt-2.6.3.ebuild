@@ -23,7 +23,7 @@ KEYWORDS="~amd64"
 RESTRICT="network-sandbox"
 
 BDEPEND="
-	net-libs/nodejs
+	net-libs/nodejs[npm]
 	sys-devel/gcc
 	virtual/pkgconfig
 	dev-lang/python:*
@@ -78,7 +78,7 @@ src_compile() {
 
 	# Force rebuild of @serialport/bindings-cpp
 	cd node_modules/@serialport/bindings-cpp || die
-	npm run install || node-gyp rebuild || die "Failed to rebuild @serialport/bindings-cpp"
+	node-gyp rebuild || die "Failed to rebuild @serialport/bindings-cpp"
 	cd - >/dev/null || die
 
 	# Rebuild any other native modules
