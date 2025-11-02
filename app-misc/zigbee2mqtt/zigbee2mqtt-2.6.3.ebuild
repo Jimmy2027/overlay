@@ -20,6 +20,7 @@ COMMIT="6e001b48ec278c6c141579c9eacc045f190fc289"
 LICENSE="0BSD Apache-2.0 BSD-2 CC-BY-4.0 GPL-3 ISC MIT PYTHON"
 SLOT="0"
 KEYWORDS="~amd64"
+RESTRICT="network-sandbox"
 
 RDEPEND="
 	acct-group/zigbee2mqtt
