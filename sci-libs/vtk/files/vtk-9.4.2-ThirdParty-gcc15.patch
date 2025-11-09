@@ -1,0 +1,25 @@
+From d00b98bd8ef02f854f1068e8ab8fd2fb28244c3b Mon Sep 17 00:00:00 2001
+From: Ted Rodgers <ted.d.rodgers@gmail.com>
+Date: Sat, 10 Aug 2024 16:13:09 -0400
+Subject: [PATCH] include cstdint for diy small_vector
+
+--- a/ThirdParty/diy2/vtkdiy2/include/vtkdiy2/thirdparty/itlib/small_vector.hpp
++++ b/ThirdParty/diy2/vtkdiy2/include/vtkdiy2/thirdparty/itlib/small_vector.hpp
+@@ -140,6 +140,7 @@
+ 
+ #include <type_traits>
+ #include <cstddef>
++#include <cstdint>
+ #include <memory>
+ 
+ #define ITLIB_SMALL_VECTOR_ERROR_HANDLING_NONE  0
+--- a/ThirdParty/viskores/vtkviskores/viskores/viskores/thirdparty/diy/viskoresdiy/include/viskoresdiy/thirdparty/itlib/small_vector.hpp
++++ b/ThirdParty/viskores/vtkviskores/viskores/viskores/thirdparty/diy/viskoresdiy/include/viskoresdiy/thirdparty/itlib/small_vector.hpp
+@@ -140,6 +140,7 @@
+ 
+ #include <type_traits>
+ #include <cstddef>
++#include <cstdint>
+ #include <memory>
+ 
+ #define ITLIB_SMALL_VECTOR_ERROR_HANDLING_NONE  0

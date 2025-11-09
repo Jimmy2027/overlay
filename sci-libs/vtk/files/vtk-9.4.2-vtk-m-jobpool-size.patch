@@ -1,0 +1,14 @@
+diff --git a/ThirdParty/viskores/vtkviskores/viskores/CMake/ViskoresWrappers.cmake b/ThirdParty/viskores/vtkviskores/viskores/CMake/ViskoresWrappers.cmake
+index 165f759..b34ead3 100644
+--- a/ThirdParty/viskores/vtkviskores/viskores/CMake/ViskoresWrappers.cmake
++++ b/ThirdParty/viskores/vtkviskores/viskores/CMake/ViskoresWrappers.cmake
+@@ -183,7 +183,7 @@ function(viskores_setup_job_pool)
+     # will require 3GB of memory. To allow for other NON Viskores jobs we leave at
+     # least 3GB of memory as 'slop'.
+     if (NOT DEFINED viskores_pool_size)
+       cmake_host_system_information(RESULT viskores_mem_ QUERY TOTAL_PHYSICAL_MEMORY)
+-      math(EXPR viskores_pool_size "(${viskores_mem_}/3072)-1")
++      math(EXPR viskores_pool_size "(${viskores_mem_}/10240 - 3072)-1")
+     endif ()
+ 
+     if (viskores_pool_size LESS 1)
