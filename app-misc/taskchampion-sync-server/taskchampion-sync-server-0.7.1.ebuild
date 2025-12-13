@@ -1,0 +1,310 @@
+# Copyright 2025 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+CRATES="
+	actix-codec@0.5.2
+	actix-http@3.11.0
+	actix-macros@0.2.4
+	actix-router@0.5.3
+	actix-rt@2.11.0
+	actix-server@2.6.0
+	actix-service@2.0.3
+	actix-utils@3.0.1
+	actix-web-codegen@4.3.0
+	actix-web@4.11.0
+	addr2line@0.24.2
+	adler2@2.0.1
+	ahash@0.8.12
+	aho-corasick@1.1.3
+	alloc-no-stdlib@2.0.4
+	alloc-stdlib@0.2.2
+	android-tzdata@0.1.1
+	android_system_properties@0.1.5
+	anstream@0.6.19
+	anstyle-parse@0.2.7
+	anstyle-query@1.1.3
+	anstyle-wincon@3.0.9
+	anstyle@1.0.11
+	anyhow@1.0.98
+	async-trait@0.1.88
+	autocfg@1.5.0
+	backtrace@0.3.75
+	base64@0.22.1
+	bb8-postgres@0.9.0
+	bb8@0.9.0
+	bitflags@2.9.1
+	block-buffer@0.10.4
+	brotli-decompressor@5.0.0
+	brotli@8.0.1
+	bumpalo@3.19.0
+	byteorder@1.5.0
+	bytes@1.10.1
+	bytestring@1.4.0
+	cc@1.2.29
+	cfg-if@1.0.1
+	chrono@0.4.41
+	clap@4.5.41
+	clap_builder@4.5.41
+	clap_lex@0.7.5
+	colorchoice@1.0.4
+	cookie@0.16.2
+	core-foundation-sys@0.8.7
+	core-foundation@0.9.4
+	cpufeatures@0.2.17
+	crc32fast@1.4.2
+	crypto-common@0.1.6
+	deranged@0.4.0
+	derive_more-impl@2.0.1
+	derive_more@2.0.1
+	diff@0.1.13
+	digest@0.10.7
+	displaydoc@0.2.5
+	encoding_rs@0.8.35
+	env_filter@0.1.3
+	env_logger@0.11.8
+	equivalent@1.0.2
+	errno@0.3.13
+	fallible-iterator@0.2.0
+	fallible-iterator@0.3.0
+	fallible-streaming-iterator@0.1.9
+	fastrand@2.3.0
+	flate2@1.1.2
+	fnv@1.0.7
+	foldhash@0.1.5
+	foreign-types-shared@0.1.1
+	foreign-types@0.3.2
+	form_urlencoded@1.2.1
+	futures-channel@0.3.31
+	futures-core@0.3.31
+	futures-executor@0.3.31
+	futures-io@0.3.31
+	futures-macro@0.3.31
+	futures-sink@0.3.31
+	futures-task@0.3.31
+	futures-util@0.3.31
+	futures@0.3.31
+	generic-array@0.14.7
+	getrandom@0.3.3
+	gimli@0.31.1
+	h2@0.3.26
+	hashbrown@0.14.5
+	hashbrown@0.15.4
+	hashlink@0.9.1
+	hmac@0.12.1
+	http@0.2.12
+	httparse@1.10.1
+	httpdate@1.0.3
+	iana-time-zone-haiku@0.1.2
+	iana-time-zone@0.1.63
+	icu_collections@2.0.0
+	icu_locale_core@2.0.0
+	icu_normalizer@2.0.0
+	icu_normalizer_data@2.0.0
+	icu_properties@2.0.1
+	icu_properties_data@2.0.1
+	icu_provider@2.0.0
+	idna@1.0.3
+	idna_adapter@1.2.1
+	impl-more@0.1.9
+	indexmap@2.10.0
+	io-uring@0.7.8
+	is_terminal_polyfill@1.70.1
+	itoa@1.0.15
+	jiff-static@0.2.15
+	jiff@0.2.15
+	jobserver@0.1.33
+	js-sys@0.3.77
+	language-tags@0.3.2
+	libc@0.2.174
+	libsqlite3-sys@0.30.1
+	linux-raw-sys@0.9.4
+	litemap@0.8.0
+	local-channel@0.1.5
+	local-waker@0.1.4
+	lock_api@0.4.13
+	log@0.4.27
+	md-5@0.10.6
+	memchr@2.7.5
+	mime@0.3.17
+	miniz_oxide@0.8.9
+	mio@1.0.4
+	native-tls@0.2.14
+	num-conv@0.1.0
+	num-traits@0.2.19
+	object@0.36.7
+	once_cell@1.21.3
+	once_cell_polyfill@1.70.1
+	openssl-macros@0.1.1
+	openssl-probe@0.1.6
+	openssl-src@300.5.1+3.5.1
+	openssl-sys@0.9.109
+	openssl@0.10.73
+	parking_lot@0.12.4
+	parking_lot_core@0.9.11
+	percent-encoding@2.3.1
+	phf@0.11.3
+	phf_shared@0.11.3
+	pin-project-lite@0.2.16
+	pin-utils@0.1.0
+	pkg-config@0.3.32
+	portable-atomic-util@0.2.4
+	portable-atomic@1.11.1
+	postgres-native-tls@0.5.1
+	postgres-protocol@0.6.8
+	postgres-types@0.2.9
+	potential_utf@0.1.2
+	powerfmt@0.2.0
+	ppv-lite86@0.2.21
+	pretty_assertions@1.4.1
+	proc-macro2@1.0.95
+	quote@1.0.40
+	r-efi@5.3.0
+	rand@0.9.1
+	rand_chacha@0.9.0
+	rand_core@0.9.3
+	redox_syscall@0.5.13
+	regex-automata@0.4.9
+	regex-lite@0.1.6
+	regex-syntax@0.8.5
+	regex@1.11.1
+	rusqlite@0.32.1
+	rustc-demangle@0.1.25
+	rustix@1.0.7
+	rustversion@1.0.21
+	ryu@1.0.20
+	schannel@0.1.27
+	scopeguard@1.2.0
+	security-framework-sys@2.14.0
+	security-framework@2.11.1
+	serde@1.0.219
+	serde_derive@1.0.219
+	serde_json@1.0.140
+	serde_urlencoded@0.7.1
+	sha1@0.10.6
+	sha2@0.10.9
+	shlex@1.3.0
+	signal-hook-registry@1.4.5
+	siphasher@1.0.1
+	slab@0.4.11
+	smallvec@1.15.1
+	socket2@0.5.10
+	socket2@0.6.0
+	stable_deref_trait@1.2.0
+	stringprep@0.1.5
+	strsim@0.11.1
+	subtle@2.6.1
+	syn@2.0.104
+	synstructure@0.13.2
+	temp-env@0.3.6
+	tempfile@3.23.0
+	thiserror-impl@2.0.12
+	thiserror@2.0.12
+	time-core@0.1.4
+	time-macros@0.2.22
+	time@0.3.41
+	tinystr@0.8.1
+	tinyvec@1.9.0
+	tinyvec_macros@0.1.1
+	tokio-macros@2.5.0
+	tokio-native-tls@0.3.1
+	tokio-postgres@0.7.13
+	tokio-util@0.7.15
+	tokio@1.47.0
+	tracing-attributes@0.1.30
+	tracing-core@0.1.34
+	tracing@0.1.41
+	typenum@1.18.0
+	unicode-bidi@0.3.18
+	unicode-ident@1.0.18
+	unicode-normalization@0.1.24
+	unicode-properties@0.1.3
+	unicode-xid@0.2.6
+	url@2.5.4
+	utf8_iter@1.0.4
+	utf8parse@0.2.2
+	uuid@1.18.0
+	vcpkg@0.2.15
+	version_check@0.9.5
+	wasi@0.11.1+wasi-snapshot-preview1
+	wasi@0.14.2+wasi-0.2.4
+	wasite@0.1.0
+	wasm-bindgen-backend@0.2.100
+	wasm-bindgen-macro-support@0.2.100
+	wasm-bindgen-macro@0.2.100
+	wasm-bindgen-shared@0.2.100
+	wasm-bindgen@0.2.100
+	web-sys@0.3.77
+	whoami@1.6.0
+	windows-core@0.61.2
+	windows-implement@0.60.0
+	windows-interface@0.59.1
+	windows-link@0.1.3
+	windows-result@0.3.4
+	windows-strings@0.4.2
+	windows-sys@0.52.0
+	windows-sys@0.59.0
+	windows-targets@0.52.6
+	windows_aarch64_gnullvm@0.52.6
+	windows_aarch64_msvc@0.52.6
+	windows_i686_gnu@0.52.6
+	windows_i686_gnullvm@0.52.6
+	windows_i686_msvc@0.52.6
+	windows_x86_64_gnu@0.52.6
+	windows_x86_64_gnullvm@0.52.6
+	windows_x86_64_msvc@0.52.6
+	wit-bindgen-rt@0.39.0
+	writeable@0.6.1
+	yansi@1.0.1
+	yoke-derive@0.8.0
+	yoke@0.8.0
+	zerocopy-derive@0.8.26
+	zerocopy@0.8.26
+	zerofrom-derive@0.1.6
+	zerofrom@0.1.6
+	zerotrie@0.2.2
+	zerovec-derive@0.11.1
+	zerovec@0.11.2
+	zstd-safe@7.2.4
+	zstd-sys@2.0.15+zstd.1.5.7
+	zstd@0.13.3
+"
+
+RUST_MIN_VER="1.85.0"
+
+inherit cargo
+
+DESCRIPTION="Sync server for Taskchampion, the task database backend for Taskwarrior"
+HOMEPAGE="https://github.com/GothenburgBitFactory/taskchampion-sync-server"
+SRC_URI="
+	https://github.com/GothenburgBitFactory/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	${CARGO_CRATE_URIS}
+"
+S="${WORKDIR}/${PN}-${PV}"
+
+LICENSE="MIT"
+# Dependent crate licenses
+LICENSE+=" Apache-2.0 BSD ISC MIT Unicode-3.0 Unlicense"
+SLOT="0"
+KEYWORDS="~amd64"
+IUSE="+sqlite postgres"
+REQUIRED_USE="|| ( sqlite postgres )"
+
+QA_FLAGS_IGNORED="
+	/usr/bin/taskchampion-sync-server
+	/usr/bin/taskchampion-sync-server-postgres
+"
+
+src_configure() {
+	local myfeatures=(
+		$(usev sqlite)
+		$(usev postgres)
+	)
+	cargo_src_configure --no-default-features
+}
+
+src_install() {
+	cargo_src_install --path server
+	einstalldocs
+}

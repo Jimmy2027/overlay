@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>hendrik@beune.org</email>
+		<name>Hendrik Beune</name>
+	</maintainer>
+	<use>
+		<flag name="sqlite">Enable SQLite storage backend (suitable for small deployments)</flag>
+		<flag name="postgres">Enable PostgreSQL storage backend (for production deployments)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">GothenburgBitFactory/taskchampion-sync-server</remote-id>
+		<bugs-to>https://github.com/GothenburgBitFactory/taskchampion-sync-server/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
