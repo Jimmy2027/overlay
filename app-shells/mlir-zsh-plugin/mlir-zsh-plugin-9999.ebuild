@@ -13,7 +13,7 @@ EGIT_REPO_URI="https://github.com/oowekyala/${PN}.git"
 
 LICENSE="Apache-2.0 MIT"
 SLOT="0"
-IUSE="pygments"
+IUSE="+pygments"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
