@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>hendrik.klug@gmail.com</email>
+    <name>Hendrik Klug</name>
+  </maintainer>
+  <longdescription>
+    Zsh plugin providing accurate completion, syntax highlighting, and output
+    wrapping for mlir-opt and similar MLIR tools. Parses the --help output of
+    MlirMain frontends at completion time and caches the results.
+  </longdescription>
+  <use>
+    <flag name="pygments">Enable syntax highlighting of MLIR output via
+      <pkg>dev-python/pygments</pkg></flag>
+  </use>
+  <upstream>
+    <bugs-to>https://github.com/oowekyala/mlir-zsh-plugin/issues</bugs-to>
+    <remote-id type="github">oowekyala/mlir-zsh-plugin</remote-id>
+  </upstream>
+</pkgmetadata>
