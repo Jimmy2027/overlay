@@ -15,6 +15,10 @@ SLOT="0"
 DEPEND="x11-wm/dwm"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-signal-handler-signature.patch"
+)
+
 src_prepare() {
 	default
 	restore_config blocks.h
