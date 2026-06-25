@@ -1205,7 +1205,9 @@ KEYWORDS="~amd64"
 DEPEND="
 	dev-libs/openssl:=
 "
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	sys-apps/bubblewrap
+"
 
 src_prepare() {
 	default
@@ -1227,6 +1229,8 @@ src_compile() {
 	use amd64 && rusty_v8_triple=x86_64-unknown-linux-musl
 	use arm64 && rusty_v8_triple=aarch64-unknown-linux-musl
 
+	# Skip building the vendored bubblewrap; rely on sys-apps/bubblewrap at runtime.
+	CODEX_SKIP_BWRAP_BUILD=1 \
 	RUSTY_V8_ARCHIVE="${DISTDIR}/rusty_v8_${RUSTY_V8_TAG}_librusty_v8_release_${rusty_v8_triple}.a.gz" \
 	RUSTY_V8_SRC_BINDING_PATH="${DISTDIR}/rusty_v8_${RUSTY_V8_TAG}_src_binding_release_${rusty_v8_triple}.rs" \
 		cargo_src_compile
