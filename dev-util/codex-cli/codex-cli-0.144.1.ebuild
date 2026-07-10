@@ -192,7 +192,7 @@ CRATES="
 	critical-section@1.2.0
 	crossbeam-channel@0.5.15
 	crossbeam-deque@0.8.6
-	crossbeam-epoch@0.9.18
+	crossbeam-epoch@0.9.20
 	crossbeam-queue@0.3.12
 	crossbeam-utils@0.8.21
 	crossterm_winapi@0.9.1
@@ -548,7 +548,6 @@ CRATES="
 	libm@0.2.16
 	libredox@0.1.12
 	libsqlite3-sys@0.37.0
-	libz-sys@1.1.23
 	link-cplusplus@1.0.12
 	link-section@0.17.2
 	linked-hash-map@0.5.6
@@ -640,7 +639,7 @@ CRATES="
 	openssl-macros@0.1.1
 	openssl-probe@0.1.6
 	openssl-probe@0.2.1
-	openssl-src@300.5.5+3.5.5
+	openssl-src@300.6.1+3.6.3
 	openssl-sys@0.9.111
 	openssl@0.10.75
 	opentelemetry-appender-tracing@0.31.1
@@ -685,7 +684,7 @@ CRATES="
 	piper@0.2.4
 	pkcs8@0.10.2
 	pkg-config@0.3.32
-	plist@1.8.0
+	plist@1.9.0
 	png@0.18.0
 	polling@3.11.0
 	poly1305@0.8.0
@@ -725,7 +724,8 @@ CRATES="
 	pulldown-cmark@0.10.3
 	pxfm@0.1.27
 	quick-error@2.0.1
-	quick-xml@0.38.4
+	quick-xml@0.39.4
+	quick-xml@0.41.0
 	quickcheck@1.1.0
 	quinn-proto@0.11.14
 	quinn-udp@0.5.14
@@ -780,8 +780,8 @@ CRATES="
 	resolv-conf@0.7.6
 	rfc6979@0.4.0
 	ring@0.17.14
-	rmcp-macros@1.7.0
-	rmcp@1.7.0
+	rmcp-macros@1.8.0
+	rmcp@1.8.0
 	rtrb@0.3.3
 	rust-embed-impl@8.11.0
 	rust-embed-utils@8.11.0
@@ -1063,7 +1063,7 @@ CRATES="
 	wayland-client@0.31.12
 	wayland-protocols-wlr@0.3.10
 	wayland-protocols@0.32.10
-	wayland-scanner@0.31.8
+	wayland-scanner@0.31.10
 	wayland-sys@0.31.8
 	web-sys@0.3.85
 	web-time@1.1.0
@@ -1180,6 +1180,7 @@ CRATES="
 	zerovec@0.11.6
 	zip@0.6.6
 	zip@2.4.2
+	zlib-rs@0.5.5
 	zlib-rs@0.6.3
 	zmij@1.0.19
 	zoneinfo64@0.3.0
@@ -1207,8 +1208,8 @@ declare -A GIT_CRATES=(
 	[nucleo]='https://github.com/helix-editor/nucleo;4253de9faabb4e5c6d81d946a5e35a90f87347ee;nucleo-%commit%'
 	[ratatui]='https://github.com/nornagon/ratatui;9b2ad1298408c45918ee9f8241a6f95498cdbed2;ratatui-%commit%'
 	[runfiles]='https://github.com/dzbarsky/rules_rust;b56cbaa8465e74127f1ea216f813cd377295ad81;rules_rust-%commit%/rust/runfiles'
-	[tokio-tungstenite]='https://github.com/openai-oss-forks/tokio-tungstenite;132f5b39c862e3a970f731d709608b3e6276d5f6;tokio-tungstenite-%commit%'
-	[tungstenite]='https://github.com/openai-oss-forks/tungstenite-rs;9200079d3b54a1ff51072e24d81fd354f085156f;tungstenite-rs-%commit%'
+	[tokio-tungstenite]='https://github.com/openai-oss-forks/tokio-tungstenite;0e5b2d73aa18dd9f0a50ee9ff199d5aef7594186;tokio-tungstenite-%commit%'
+	[tungstenite]='https://github.com/openai-oss-forks/tungstenite-rs;4fffad30fe373adbdcffab9545e9e9bf4f2fc19f;tungstenite-rs-%commit%'
 	[webrtc-sys-build]='https://github.com/juberti-oai/rust-sdks;e2d1d1d230c6fc9df171ccb181423f957bb3c1f0;rust-sdks-%commit%/webrtc-sys/build'
 	[webrtc-sys]='https://github.com/juberti-oai/rust-sdks;e2d1d1d230c6fc9df171ccb181423f957bb3c1f0;rust-sdks-%commit%/webrtc-sys'
 )
@@ -1266,8 +1267,8 @@ src_prepare() {
 		-e "s|runfiles = { git = \"https://github.com/dzbarsky/rules_rust\", rev = \"b56cbaa8465e74127f1ea216f813cd377295ad81\" }|runfiles = { path = \"${WORKDIR}/rules_rust-b56cbaa8465e74127f1ea216f813cd377295ad81/rust/runfiles\" }|" \
 		-e "s|crossterm = { git = \"https://github.com/nornagon/crossterm\", rev = \"87db8bfa6dc99427fd3b071681b07fc31c6ce995\" }|crossterm = { path = \"${WORKDIR}/crossterm-87db8bfa6dc99427fd3b071681b07fc31c6ce995\" }|" \
 		-e "s|ratatui = { git = \"https://github.com/nornagon/ratatui\", rev = \"9b2ad1298408c45918ee9f8241a6f95498cdbed2\" }|ratatui = { path = \"${WORKDIR}/ratatui-9b2ad1298408c45918ee9f8241a6f95498cdbed2\" }|" \
-		-e "s|tokio-tungstenite = { git = \"https://github.com/openai-oss-forks/tokio-tungstenite\", rev = \"132f5b39c862e3a970f731d709608b3e6276d5f6\" }|tokio-tungstenite = { path = \"${WORKDIR}/tokio-tungstenite-132f5b39c862e3a970f731d709608b3e6276d5f6\" }|" \
-		-e "s|tungstenite = { git = \"https://github.com/openai-oss-forks/tungstenite-rs\", rev = \"9200079d3b54a1ff51072e24d81fd354f085156f\" }|tungstenite = { path = \"${WORKDIR}/tungstenite-rs-9200079d3b54a1ff51072e24d81fd354f085156f\" }|" \
+		-e "s|tokio-tungstenite = { git = \"https://github.com/openai-oss-forks/tokio-tungstenite\", rev = \"0e5b2d73aa18dd9f0a50ee9ff199d5aef7594186\" }|tokio-tungstenite = { path = \"${WORKDIR}/tokio-tungstenite-0e5b2d73aa18dd9f0a50ee9ff199d5aef7594186\" }|" \
+		-e "s|tungstenite = { git = \"https://github.com/openai-oss-forks/tungstenite-rs\", rev = \"4fffad30fe373adbdcffab9545e9e9bf4f2fc19f\" }|tungstenite = { path = \"${WORKDIR}/tungstenite-rs-4fffad30fe373adbdcffab9545e9e9bf4f2fc19f\" }|" \
 		"${S}/Cargo.toml" || die "Failed to patch Cargo.toml"
 }
 
