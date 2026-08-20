@@ -33,7 +33,7 @@ CRATES="
 	anstyle-query@1.1.5
 	anstyle-wincon@3.0.11
 	anstyle@1.0.13
-	anyhow@1.0.102
+	anyhow@1.0.103
 	arbitrary@1.4.2
 	arboard@3.6.1
 	arc-swap@1.9.0
@@ -123,7 +123,6 @@ CRATES="
 	bytes@1.11.1
 	bytestring@1.5.0
 	bzip2-sys@0.1.13+1.0.8
-	bzip2@0.4.4
 	bzip2@0.5.2
 	cached@0.56.0
 	cached_proc_macro@0.25.0
@@ -135,7 +134,6 @@ CRATES="
 	cc@1.2.55
 	cesu8@1.1.0
 	cexpr@0.6.0
-	cfg-expr@0.20.7
 	cfg-if@1.0.4
 	cfg_aliases@0.1.1
 	cfg_aliases@0.2.1
@@ -159,7 +157,6 @@ CRATES="
 	cmov@0.5.3
 	cmp_any@0.8.1
 	cobs@0.3.0
-	codespan-reporting@0.13.1
 	color-eyre@0.6.5
 	color-spantrace@0.3.0
 	color_quant@1.1.0
@@ -173,7 +170,6 @@ CRATES="
 	const-oid@0.9.6
 	const_format@0.2.35
 	const_format_proc_macros@0.2.34
-	constant_time_eq@0.1.5
 	constant_time_eq@0.3.1
 	convert_case@0.10.0
 	convert_case@0.6.0
@@ -192,7 +188,7 @@ CRATES="
 	critical-section@1.2.0
 	crossbeam-channel@0.5.15
 	crossbeam-deque@0.8.6
-	crossbeam-epoch@0.9.18
+	crossbeam-epoch@0.9.20
 	crossbeam-queue@0.3.12
 	crossbeam-utils@0.8.21
 	crossterm_winapi@0.9.1
@@ -211,11 +207,6 @@ CRATES="
 	ctutils@0.4.2
 	curve25519-dalek-derive@0.1.1
 	curve25519-dalek@4.1.3
-	cxx-build@1.0.194
-	cxx@1.0.194
-	cxxbridge-cmd@1.0.194
-	cxxbridge-flags@1.0.194
-	cxxbridge-macro@1.0.194
 	darling@0.20.11
 	darling@0.21.3
 	darling@0.23.0
@@ -299,6 +290,7 @@ CRATES="
 	event-listener-strategy@0.5.4
 	event-listener@5.4.1
 	eventsource-stream@0.2.3
+	extended@0.1.0
 	eyre@0.6.12
 	fancy-regex@0.16.2
 	faster-hex@0.10.0
@@ -315,7 +307,6 @@ CRATES="
 	find-msvc-tools@0.1.9
 	findshlibs@0.10.2
 	fixed_decimal@0.7.2
-	fixedbitset@0.4.2
 	fixedbitset@0.5.7
 	flate2@1.1.8
 	float-cmp@0.10.0
@@ -331,7 +322,6 @@ CRATES="
 	foreign-types-shared@0.1.1
 	foreign-types@0.3.2
 	form_urlencoded@1.2.2
-	fs2@0.4.3
 	fs_extra@1.3.0
 	fsevent-sys@4.1.0
 	fslock@0.2.1
@@ -350,14 +340,12 @@ CRATES="
 	generator@0.8.8
 	generic-array@0.14.7
 	gethostname@1.1.0
-	getopts@0.2.24
 	getrandom@0.2.17
 	getrandom@0.3.4
 	getrandom@0.4.2
 	ghash@0.5.1
 	gif@0.14.1
 	gimli@0.32.3
-	gio-sys@0.21.5
 	gix-actor@0.40.0
 	gix-archive@0.30.0
 	gix-attributes@0.31.0
@@ -411,12 +399,8 @@ CRATES="
 	gix-worktree-stream@0.30.0
 	gix-worktree@0.50.0
 	gix@0.81.0
-	glib-macros@0.21.5
-	glib-sys@0.21.5
-	glib@0.21.5
 	glob@0.3.3
 	globset@0.4.18
-	gobject-sys@0.21.5
 	group@0.13.0
 	gzip-header@1.0.0
 	h2@0.4.13
@@ -433,7 +417,6 @@ CRATES="
 	headers@0.4.1
 	heapless@0.7.17
 	heapless@0.8.0
-	heck@0.4.1
 	heck@0.5.0
 	hermit-abi@0.5.2
 	hex@0.4.3
@@ -513,7 +496,6 @@ CRATES="
 	is-terminal@0.4.17
 	is_ci@1.2.0
 	is_terminal_polyfill@1.70.2
-	itertools@0.11.0
 	itertools@0.13.0
 	itertools@0.14.0
 	itoa@1.0.17
@@ -548,7 +530,6 @@ CRATES="
 	libm@0.2.16
 	libredox@0.1.12
 	libsqlite3-sys@0.37.0
-	link-cplusplus@1.0.12
 	link-section@0.17.2
 	linked-hash-map@0.5.6
 	linktime-proc-macro@0.1.0
@@ -661,21 +642,13 @@ CRATES="
 	parking@2.2.1
 	parking_lot@0.12.5
 	parking_lot_core@0.9.12
-	password-hash@0.4.2
 	paste@1.0.15
 	pastey@0.2.1
-	path-absolutize@3.1.1
-	path-dedot@3.1.1
 	pathdiff@0.2.3
-	pbjson-build@0.6.2
-	pbjson-types@0.6.0
-	pbjson@0.6.0
-	pbkdf2@0.11.0
 	pbkdf2@0.12.2
 	pem-rfc7468@0.7.0
 	pem@3.0.6
 	percent-encoding@2.3.2
-	petgraph@0.6.5
 	petgraph@0.8.3
 	pin-project-internal@1.1.10
 	pin-project-lite@0.2.16
@@ -684,7 +657,7 @@ CRATES="
 	piper@0.2.4
 	pkcs8@0.10.2
 	pkg-config@0.3.32
-	plist@1.8.0
+	plist@1.9.0
 	png@0.18.0
 	polling@3.11.0
 	poly1305@0.8.0
@@ -709,22 +682,18 @@ CRATES="
 	process-wrap@9.0.1
 	prodash@31.0.0
 	proptest@1.9.0
-	prost-build@0.12.6
 	prost-build@0.14.3
-	prost-derive@0.12.6
 	prost-derive@0.14.3
-	prost-types@0.12.6
 	prost-types@0.14.3
-	prost@0.12.6
 	prost@0.14.3
 	psl-types@2.0.11
 	psl@2.1.184
 	publicsuffix@2.3.0
-	pulldown-cmark-escape@0.10.1
 	pulldown-cmark@0.10.3
 	pxfm@0.1.27
 	quick-error@2.0.1
-	quick-xml@0.38.4
+	quick-xml@0.39.4
+	quick-xml@0.41.0
 	quickcheck@1.1.0
 	quinn-proto@0.11.14
 	quinn-udp@0.5.14
@@ -779,9 +748,8 @@ CRATES="
 	resolv-conf@0.7.6
 	rfc6979@0.4.0
 	ring@0.17.14
-	rmcp-macros@1.7.0
-	rmcp@1.7.0
-	rtrb@0.3.3
+	rmcp-macros@1.8.0
+	rmcp@1.8.0
 	rust-embed-impl@8.11.0
 	rust-embed-utils@8.11.0
 	rust-embed@8.11.0
@@ -816,7 +784,6 @@ CRATES="
 	schemars_derive@1.2.1
 	scoped-tls@1.0.1
 	scopeguard@1.2.0
-	scratch@1.0.9
 	scrypt@0.11.0
 	sdd@3.0.10
 	sec1@0.7.3
@@ -916,6 +883,15 @@ CRATES="
 	subtle@2.6.1
 	supports-color@2.1.0
 	supports-color@3.0.2
+	symphonia-bundle-mp3@0.6.0
+	symphonia-common@0.6.0
+	symphonia-core@0.6.0
+	symphonia-format-isomp4@0.6.0
+	symphonia-format-mkv@0.6.0
+	symphonia-format-ogg@0.6.0
+	symphonia-format-riff@0.6.0
+	symphonia-metadata@0.6.0
+	symphonia@0.6.0
 	syn@1.0.109
 	syn@2.0.117
 	sync_wrapper@1.0.2
@@ -924,11 +900,9 @@ CRATES="
 	sys-locale@0.3.2
 	system-configuration-sys@0.6.0
 	system-configuration@0.7.0
-	system-deps@7.0.7
 	tagptr@0.2.0
 	take_mut@0.2.2
 	tar@0.4.45
-	target-lexicon@0.13.3
 	tempfile@3.27.0
 	temporal_capi@0.2.3
 	temporal_rs@0.2.3
@@ -1036,7 +1010,6 @@ CRATES="
 	v8@149.2.0
 	valuable@0.1.1
 	vcpkg@0.2.15
-	version-compare@0.2.1
 	version_check@0.9.5
 	vsimd@0.8.0
 	vt100@0.16.2
@@ -1062,7 +1035,7 @@ CRATES="
 	wayland-client@0.31.12
 	wayland-protocols-wlr@0.3.10
 	wayland-protocols@0.32.10
-	wayland-scanner@0.31.8
+	wayland-scanner@0.31.10
 	wayland-sys@0.31.8
 	web-sys@0.3.85
 	web-time@1.1.0
@@ -1177,17 +1150,14 @@ CRATES="
 	zerotrie@0.2.4
 	zerovec-derive@0.11.3
 	zerovec@0.11.6
-	zip@0.6.6
 	zip@2.4.2
 	zlib-rs@0.5.5
 	zlib-rs@0.6.3
 	zmij@1.0.19
 	zoneinfo64@0.3.0
 	zopfli@0.8.3
-	zstd-safe@5.0.2+zstd.1.5.2
 	zstd-safe@7.2.4
 	zstd-sys@2.0.16+zstd.1.5.7
-	zstd@0.11.2+zstd.1.5.2
 	zstd@0.13.3
 	zune-core@0.4.12
 	zune-core@0.5.1
@@ -1200,17 +1170,12 @@ CRATES="
 
 declare -A GIT_CRATES=(
 	[crossterm]='https://github.com/nornagon/crossterm;87db8bfa6dc99427fd3b071681b07fc31c6ce995;crossterm-%commit%'
-	[libwebrtc]='https://github.com/juberti-oai/rust-sdks;e2d1d1d230c6fc9df171ccb181423f957bb3c1f0;rust-sdks-%commit%/libwebrtc'
-	[livekit-protocol]='https://github.com/juberti-oai/rust-sdks;e2d1d1d230c6fc9df171ccb181423f957bb3c1f0;rust-sdks-%commit%/livekit-protocol'
-	[livekit-runtime]='https://github.com/juberti-oai/rust-sdks;e2d1d1d230c6fc9df171ccb181423f957bb3c1f0;rust-sdks-%commit%/livekit-runtime'
 	[nucleo-matcher]='https://github.com/helix-editor/nucleo;4253de9faabb4e5c6d81d946a5e35a90f87347ee;nucleo-%commit%/matcher'
 	[nucleo]='https://github.com/helix-editor/nucleo;4253de9faabb4e5c6d81d946a5e35a90f87347ee;nucleo-%commit%'
 	[ratatui]='https://github.com/nornagon/ratatui;9b2ad1298408c45918ee9f8241a6f95498cdbed2;ratatui-%commit%'
 	[runfiles]='https://github.com/dzbarsky/rules_rust;b56cbaa8465e74127f1ea216f813cd377295ad81;rules_rust-%commit%/rust/runfiles'
 	[tokio-tungstenite]='https://github.com/openai-oss-forks/tokio-tungstenite;0e5b2d73aa18dd9f0a50ee9ff199d5aef7594186;tokio-tungstenite-%commit%'
 	[tungstenite]='https://github.com/openai-oss-forks/tungstenite-rs;4fffad30fe373adbdcffab9545e9e9bf4f2fc19f;tungstenite-rs-%commit%'
-	[webrtc-sys-build]='https://github.com/juberti-oai/rust-sdks;e2d1d1d230c6fc9df171ccb181423f957bb3c1f0;rust-sdks-%commit%/webrtc-sys/build'
-	[webrtc-sys]='https://github.com/juberti-oai/rust-sdks;e2d1d1d230c6fc9df171ccb181423f957bb3c1f0;rust-sdks-%commit%/webrtc-sys'
 )
 
 RUST_MIN_VER="1.85.0"
@@ -1243,8 +1208,8 @@ S="${WORKDIR}/codex-rust-v${PV/_/-}/codex-rs"
 LICENSE="Apache-2.0"
 # Dependent crate licenses
 LICENSE+="
-	Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 BSD Boost-1.0
-	CC0-1.0 CDLA-Permissive-2.0 ISC MIT MPL-2.0 Unicode-3.0 ZLIB
+	Apache-2.0 BSD-2 BSD Boost-1.0 CC0-1.0 CDLA-Permissive-2.0 ISC MIT
+	MPL-2.0 Unicode-3.0 ZLIB
 "
 SLOT="0"
 KEYWORDS="~amd64"
@@ -1277,10 +1242,13 @@ src_compile() {
 	use arm64 && rusty_v8_triple=aarch64-unknown-linux-musl
 
 	# Skip building the vendored bubblewrap; rely on sys-apps/bubblewrap at runtime.
+	# Build only the codex-cli package (produces the `codex` binary). Building the
+	# whole workspace pulls in sample crates such as codex-thread-manager-sample,
+	# which overflow rustc's query depth limit and are not shipped anyway.
 	CODEX_SKIP_BWRAP_BUILD=1 \
 	RUSTY_V8_ARCHIVE="${DISTDIR}/rusty_v8_${RUSTY_V8_TAG}_librusty_v8_release_${rusty_v8_triple}.a.gz" \
 	RUSTY_V8_SRC_BINDING_PATH="${DISTDIR}/rusty_v8_${RUSTY_V8_TAG}_src_binding_release_${rusty_v8_triple}.rs" \
-		cargo_src_compile
+		cargo_src_compile -p codex-cli
 }
 
 src_install() {
