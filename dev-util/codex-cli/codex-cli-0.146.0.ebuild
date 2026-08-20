@@ -1213,6 +1213,7 @@ LICENSE+="
 "
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="+code-mode-host"
 
 DEPEND="
 	dev-libs/openssl:=
@@ -1242,16 +1243,19 @@ src_compile() {
 	use arm64 && rusty_v8_triple=aarch64-unknown-linux-musl
 
 	# Skip building the vendored bubblewrap; rely on sys-apps/bubblewrap at runtime.
-	# Build only the codex-cli package (produces the `codex` binary). Building the
-	# whole workspace pulls in sample crates such as codex-thread-manager-sample,
-	# which overflow rustc's query depth limit and are not shipped anyway.
+	# Build only the shipped packages. Building the whole workspace pulls in sample
+	# crates such as codex-thread-manager-sample, which overflow rustc's query
+	# depth limit and are not shipped anyway.
 	CODEX_SKIP_BWRAP_BUILD=1 \
 	RUSTY_V8_ARCHIVE="${DISTDIR}/rusty_v8_${RUSTY_V8_TAG}_librusty_v8_release_${rusty_v8_triple}.a.gz" \
 	RUSTY_V8_SRC_BINDING_PATH="${DISTDIR}/rusty_v8_${RUSTY_V8_TAG}_src_binding_release_${rusty_v8_triple}.rs" \
-		cargo_src_compile -p codex-cli
+		cargo_src_compile -p codex-cli $(usex code-mode-host '-p codex-code-mode-host' '')
 }
 
 src_install() {
 	newbin "$(cargo_target_dir)/codex" codex
+	if use code-mode-host; then
+		newbin "$(cargo_target_dir)/codex-code-mode-host" codex-code-mode-host
+	fi
 	dodoc README.md
 }
